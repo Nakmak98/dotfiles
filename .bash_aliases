@@ -10,11 +10,12 @@
 
 # updating like in Arch
 alias paru='sudo apt update && sudo apt upgrade'
+alias apt='sudo apt'
  
 alias ls='exa -la --icons'
 
 # search file to open in neovim
-alias fzvim='vim $(fzf --height 40% --layout=reverse)'
+alias fzv='vim $(fzf --height 40% --layout=reverse)'
 
 # pretty cat 
 alias cat='batcat'

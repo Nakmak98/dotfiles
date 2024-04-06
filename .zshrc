@@ -23,10 +23,14 @@ autoload -Uz promptinit
 promptinit
 prompt redhat
 
+autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
+add-zsh-hook chpwd chpwd_recent_dirs
+
+
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
-setopt extendedglob
+
 bindkey -v
 zstyle ':completion:*' auto-description 'specify: %d'
 zstyle ':completion:*' completer _expand _complete _correct _approximate
@@ -42,9 +46,10 @@ zstyle ':completion:*' menu select=long
 zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
 zstyle ':completion:*' use-compctl false
 zstyle ':completion:*' verbose true
-
+zstyle ':completion:*:*:cdr:*:*' menu selection
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
+
 
 # add my aliases 
 if [[ -r ~/.bash_aliases ]]; then
@@ -55,6 +60,7 @@ fi
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .cache -g ""'
 
 # my local /bin stuff must in PATH
-export PATH=~/.local/bin:$PATH
+export PATH=~/.local/bin:~/.cargo/bin:$PATH
 eval "$(zoxide init zsh)"
 source ~/.dotbare/dotbare.plugin.zsh
+

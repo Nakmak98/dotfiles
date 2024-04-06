@@ -37,6 +37,7 @@ set splitbelow splitright
 call plug#begin(stdpath('data') . '/plugged')
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim'
+    Plug 'rking/ag.vim'
 call plug#end()
 
 " Mappings for split movements
@@ -48,3 +49,4 @@ map <C-h> <C-w>h
 map <C-f> :Files<CR>
 " Map ii for switch to Normal mode
 :imap ii <Esc>
+:tnoremap ii <C-\><C-n>
